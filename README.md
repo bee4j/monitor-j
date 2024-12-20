@@ -1,2 +1,2 @@
-# bee4j-monitor
+# monitor-j
 JVM monitor for Java.
