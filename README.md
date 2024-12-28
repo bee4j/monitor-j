@@ -1,2 +1,2 @@
 # monitor-j
-JVM monitor for Java.
+monitor for Java.
