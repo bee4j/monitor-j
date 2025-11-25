@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>monitor-j</artifactId>
+    <groupId>org.bee4j.monitor</groupId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <modules>
+        <module>monitor-agent</module>
+        <module>monitor-sdk</module>
+        <module>monitor-server</module>
+        <module>monitor-util</module>
+    </modules>
+
+    <!-- 管理依赖的第三方版本 -->
+    <properties>
+        <!-- JDK Config -->
+        <java.version>1.8</java.version>
+        <jdk.path>${java.home}/lib/tools.jar</jdk.path>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Project Version -->
+        <project.version>1.0.0</project.version>
+        <project_major.version>1</project_major.version>
+        <project_minor.version>0</project_minor.version>
+        <project_bugfix.version>0</project_bugfix.version>
+        <project_snapshot.version>-SNAPSHOT</project_snapshot.version>
+        <project_full.version>${project_major.version}.${project_minor.version}.${project_bugfix.version}${project_snapshot.version}</project_full.version>
+
+        <!-- version definition in SpringBoot pom.xml -->
+        <maven_war_plugin.version>3.3.2</maven_war_plugin.version>
+        <maven_jar_plugin.version>3.2.2</maven_jar_plugin.version>
+        <maven_help_plugin.version>3.2.0</maven_help_plugin.version>
+        <maven_clean_plugin.version>3.2.0</maven_clean_plugin.version>
+        <maven_shade_plugin.version>3.3.0</maven_shade_plugin.version>
+        <maven_source_plugin.version>3.2.1</maven_source_plugin.version>
+        <maven_deploy_plugin.version>2.8.2</maven_deploy_plugin.version>
+        <maven_antrun_plugin.version>3.0.0</maven_antrun_plugin.version>
+        <maven_install_plugin.version>2.5.2</maven_install_plugin.version>
+        <maven_invoker_plugin.version>3.2.2</maven_invoker_plugin.version>
+        <maven_javadoc_plugin.version>3.4.1</maven_javadoc_plugin.version>
+        <maven_enforcer_plugin.version>3.0.0</maven_enforcer_plugin.version>
+        <maven_assembly_plugin.version>3.3.0</maven_assembly_plugin.version>
+        <maven_compiler_plugin.version>3.10.1</maven_compiler_plugin.version>
+        <maven_failsafe_plugin.version>2.22.2</maven_failsafe_plugin.version>
+        <maven_surefire_plugin.version>2.22.2</maven_surefire_plugin.version>
+        <maven_resources_plugin.version>3.2.0</maven_resources_plugin.version>
+        <maven_dependency_plugin.version>3.3.0</maven_dependency_plugin.version>
+
+        <com_github_oshi.version>6.6.3</com_github_oshi.version>
+
+        <javax_servlet.version>4.0.1</javax_servlet.version>
+
+        <org_apache_commons.version>3.12.0</org_apache_commons.version>
+
+        <org_slf4j.version>2.0.16</org_slf4j.version>
+        <org_projectlombok.version>1.18.30</org_projectlombok.version>
+        <junit.version>4.13.2</junit.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 获取系统信息 -->
+            <dependency>
+                <groupId>com.github.oshi</groupId>
+                <artifactId>oshi-core</artifactId>
+                <version>${com_github_oshi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax_servlet.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${org_apache_commons.version}</version>
+            </dependency>
+
+            <!-- 基础工具 -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${org_slf4j.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org_projectlombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <plugins>
+            <!-- Maven编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven_compiler_plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- Maven执行JUnit或TestNG测试插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven_deploy_plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
