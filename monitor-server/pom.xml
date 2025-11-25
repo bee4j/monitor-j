@@ -13,6 +13,12 @@
 
     <artifactId>monitor-server</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.bee4j.monitor</groupId>
+            <artifactId>monitor-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
