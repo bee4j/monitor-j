@@ -2,12 +2,14 @@ package org.bee4j.monitor.sdk.test;
 
 import org.bee4j.monitor.sdk.runtime.ServerState;
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  *
  *
  * @author bee4j
  */
+@SpringBootTest(classes = {ServerState.class})
 public class ServerStateTest {
 
     @Test

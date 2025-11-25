@@ -104,9 +104,9 @@ public class ServerState {
 
     public void copyTo() throws Exception {
         SystemInfo si = new SystemInfo();
-        HardwareAbstractionLayer hal = si.getHardware();
-        setCpuInfo(hal.getProcessor());
-        setMemInfo(hal.getMemory());
+        HardwareAbstractionLayer hardware = si.getHardware();
+        setCpuInfo(hardware.getProcessor());
+        setMemInfo(hardware.getMemory());
         setSysInfo();
         setJvmInfo();
         setSysFiles(si.getOperatingSystem());
