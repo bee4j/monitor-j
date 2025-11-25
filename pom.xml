@@ -53,6 +53,8 @@
         <maven_resources_plugin.version>3.2.0</maven_resources_plugin.version>
         <maven_dependency_plugin.version>3.3.0</maven_dependency_plugin.version>
 
+        <springboot2.version>2.7.18</springboot2.version>
+
         <com_github_oshi.version>6.6.3</com_github_oshi.version>
 
         <javax_servlet.version>4.0.1</javax_servlet.version>
@@ -103,6 +105,12 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot2.version}</version>
+                <scope>test</scope><!-- 只在编译测试代码或者运行测试代码时才使用该依赖,依赖不会被打包. -->
             </dependency>
         </dependencies>
     </dependencyManagement>
