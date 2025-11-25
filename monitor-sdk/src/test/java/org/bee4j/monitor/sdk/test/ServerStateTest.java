@@ -1,4 +1,4 @@
-package org.bee4j.monitor.sdk.test.runtime;
+package org.bee4j.monitor.sdk.test;
 
 import org.bee4j.monitor.sdk.runtime.ServerState;
 import org.junit.Test;
